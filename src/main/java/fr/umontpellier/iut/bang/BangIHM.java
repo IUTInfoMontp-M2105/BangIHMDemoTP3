@@ -12,6 +12,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -31,13 +32,18 @@ public class BangIHM extends Application {
     public void start(Stage primaryStage) throws Exception {
         this.primaryStage = primaryStage;
         primaryStage.setTitle("Bang");
-        initStartView();
+/*        initStartView();
         startView.setPlayersListSetListener(whenPlayersNamesListIsSet);
-        initPlayersNames();
+        initPlayersNames();*/
+        startGame();
     }
 
     public void startGame() {
-        List<String> playerNames = startView.getPlayersNamesList();
+        List<String> playerNames = new ArrayList<>()/*startView.getPlayersNamesList()*/;
+        playerNames.add("John");
+        playerNames.add("Paul");
+        playerNames.add("Ringo");
+        playerNames.add("George");
         game = new IGame(new Game(Game.makePlayers(playerNames.toArray(new String[playerNames.size()]))));
         initGameView();
         initResultView();
