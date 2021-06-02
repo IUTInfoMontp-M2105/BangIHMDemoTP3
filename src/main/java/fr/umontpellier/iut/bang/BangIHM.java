@@ -4,6 +4,7 @@ import fr.umontpellier.iut.bang.logic.Game;
 import fr.umontpellier.iut.bang.views.GameView;
 import fr.umontpellier.iut.bang.views.ResultsView;
 import fr.umontpellier.iut.bang.views.StartView;
+import fr.umontpellier.iut.bang.views.ourviews.MyGameView;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.collections.ListChangeListener;
@@ -69,7 +70,7 @@ public class BangIHM extends Application {
      * Pour instancier la vue principale du jeu
      */
     private void initGameView() {
-        gameView = null;
+        gameView = new MyGameView(game);
     }
 
     /**
