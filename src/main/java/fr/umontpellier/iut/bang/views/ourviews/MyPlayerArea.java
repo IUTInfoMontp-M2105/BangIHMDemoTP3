@@ -47,9 +47,23 @@ public class MyPlayerArea extends PlayerArea {
                     MyCardView cardView = new MyCardView(new ICard(card), MyPlayerArea.this);
                     laMainDuJoueur.getChildren().add(cardView);
                 }
+            } else if (change.wasRemoved()) {
+                for (Card card : change.getRemoved()) {
+                    laMainDuJoueur.getChildren().remove(findCardView(laMainDuJoueur, card));
+                }
             }
         }
     };
+
+    private CardView findCardView(HBox container, Card card) {
+        for (Node n : container.getChildren()) {
+            CardView nodeCardView = (CardView) n;
+            Card nodeCard = nodeCardView.getCard();
+            if (nodeCard.equals(card))
+                return nodeCardView;
+        }
+        return null;
+    }
 
     @Override
     public void highlightCurrentArea() {
