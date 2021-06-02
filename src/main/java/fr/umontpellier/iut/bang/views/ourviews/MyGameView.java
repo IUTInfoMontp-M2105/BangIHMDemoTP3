@@ -15,6 +15,7 @@ public class MyGameView extends GameView {
         for (Player p : game.getPlayers())
             vuePrincipale.getChildren().add(new MyPlayerArea(new IPlayer(p), this));
         getChildren().add(vuePrincipale);
+        getIGame().run();
     }
 
     @Override
