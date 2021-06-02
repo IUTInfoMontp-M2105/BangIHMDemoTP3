@@ -8,19 +8,26 @@ import fr.umontpellier.iut.bang.views.PlayerArea;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.Node;
+import javafx.scene.control.Button;
 import javafx.scene.layout.VBox;
 
 public class MyGameView extends GameView {
 
     private VBox vuePrincipale;
+    private Button pass;
 
     public MyGameView(IGame game) {
         super(game);
         vuePrincipale = new VBox();
         for (Player p : game.getPlayers())
             vuePrincipale.getChildren().add(new MyPlayerArea(new IPlayer(p), this));
+        pass = new Button("pass");
+
+        vuePrincipale.getChildren().add(pass);
+
         getChildren().add(vuePrincipale);
         setCurrentPlayerChangesListener(whenCurrentPlayerChanges);
+        setPassSelectedListener();
         getIGame().run();
     }
 
@@ -50,6 +57,8 @@ public class MyGameView extends GameView {
 
     @Override
     protected void setPassSelectedListener() {
-
+        pass.setOnAction(event -> {
+            getIGame().onPass();
+        });
     }
 }
